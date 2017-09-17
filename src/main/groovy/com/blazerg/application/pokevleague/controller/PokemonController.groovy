@@ -42,7 +42,7 @@ class PokemonController {
 
     @GetMapping(value="/pokemon", produces = "application/json")
     @ResponseBody
-    String getExistingPoke(@RequestHeader(value="User-Agent", defaultValue="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11") String userAgent) {
+    String getExistingPoke(@RequestHeader(value="user-agent", defaultValue="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11") String userAgent) {
         RestTemplate restTemplate = new RestTemplate()
         Forms pokemonTeamResponse = restTemplate.getForObject(
                 "http://pokeapi.co/api/v2/pokemon/1", Forms.class)
