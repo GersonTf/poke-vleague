@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.servlet.view.RedirectView
 
 @Api(value = 'Pokemon', description = 'The pokemon league API')
 @RestController
@@ -44,7 +45,7 @@ class PokemonController {
     }
 
     @GetMapping(value="/")
-    String emptyUrlRedirect() {
-        return "redirect:/swagger-ui.html"
+    RedirectView emptyUrlRedirect() {
+        return new RedirectView("https://poke-vleague.herokuapp.com/swagger-ui.html")
     }
 }

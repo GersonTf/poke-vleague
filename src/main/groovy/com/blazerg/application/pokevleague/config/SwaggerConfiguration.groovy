@@ -47,7 +47,7 @@ class SwaggerConfiguration {
     ApiInfo apiInfo() {
         return new ApiInfoBuilder()
             .title('Poke virtual league')
-            .description('Just a project for practice heroku integration with spring boot')
+            .description('Just a project for practicing heroku integration with spring boot')
             .license('Blazerg')
             .licenseUrl('https://github.com/Blazerg2/')
             .termsOfServiceUrl('')
