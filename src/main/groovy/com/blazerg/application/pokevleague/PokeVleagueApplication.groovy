@@ -3,20 +3,14 @@ package com.blazerg.application.pokevleague
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.stereotype.Controller
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.ResponseBody
+import org.springframework.context.annotation.ComponentScan
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 
-@Controller
-@SpringBootApplication
+@ComponentScan(basePackages = 'com.blazerg.application.pokevleague')
+@EnableJpaRepositories(basePackages = 'com.blazerg.application.pokevleague.domain.repository')
 @EnableAutoConfiguration
+@SpringBootApplication
 class PokeVleagueApplication {
-
-	@RequestMapping("/")
-	@ResponseBody
-	String home() {
-		return "Hello World!"
-	}
 
 	static void main(String[] args) {
 		SpringApplication.run PokeVleagueApplication, args
