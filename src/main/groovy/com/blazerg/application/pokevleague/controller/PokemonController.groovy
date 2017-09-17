@@ -20,6 +20,6 @@ class PokemonController {
 
     @RequestMapping(value="/")
     String emptyUrlRedirect() {
-        return "Hello World2!"
+        return "Hello World3!"
     }
 }
