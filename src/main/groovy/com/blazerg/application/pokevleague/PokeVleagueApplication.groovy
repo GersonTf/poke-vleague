@@ -15,7 +15,7 @@ class PokeVleagueApplication {
 	@RequestMapping("/")
 	@ResponseBody
 	String home() {
-		return "Hello World2!"
+		return "Hello World!"
 	}
 
 	static void main(String[] args) {
