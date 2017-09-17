@@ -1,13 +1,13 @@
 package com.blazerg.application.pokevleague.controller
 
 import com.blazerg.application.pokevleague.domain.repository.PokemonRepository
-import com.blazerg.application.pokevleague.model.Forms
 import com.blazerg.application.pokevleague.model.PokemonTeamResponse
 import com.blazerg.application.pokevleague.service.PokemonService
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
 import io.swagger.annotations.ApiResponse
 import io.swagger.annotations.ApiResponses
+import org.slf4j.Logger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpEntity
 import org.springframework.http.HttpHeaders
@@ -53,6 +53,8 @@ class PokemonController {
 
         Random random = new Random()
         def index = random.nextInt((791 - 1) + 1) + 1
+
+        println(random)
 
         ResponseEntity<String> response = restTemplate.exchange("http://pokeapi.co/api/v2/pokemon/$index", HttpMethod.GET, entity, String.class)
         response.getBody()
