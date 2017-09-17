@@ -19,6 +19,7 @@ class PokemonController {
     @RequestMapping(value="/pokemon", produces = "application/json")
     @ResponseBody
     String getExistingPoke() {
+        println pokemonRepository.findAll().name
         String nombre = pokemonRepository.findAll().get(0).name
         nombre
     }
