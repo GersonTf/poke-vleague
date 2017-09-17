@@ -17,4 +17,9 @@ class PokemonController {
     String getExistingPoke() {
         return "Hello World2!"
     }
+
+    @RequestMapping(value="/")
+    String emptyUrlRedirect() {
+        return "Hello World2!"
+    }
 }
