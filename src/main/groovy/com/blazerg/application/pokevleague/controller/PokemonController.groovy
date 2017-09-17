@@ -49,7 +49,7 @@ class PokemonController {
         RestTemplate restTemplate = new RestTemplate()
 
         final HttpHeaders headers = new HttpHeaders()
-        headers.set("User-Agent", "test")
+        headers.set("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11")
 
         final HttpEntity<String> entity = new HttpEntity<String>(headers)
 
@@ -59,10 +59,10 @@ class PokemonController {
 
 //
 //        Forms pokemonTeamResponse = restTemplate.getForEntity(
-//                "http://pokeapi.co/api/v2/pokemon/1", entity)
+//                "http://pokeapi.co/api/v2/pokemon/1", entity, Forms.class)
 //        println pokemonTeamResponse
 //
-//        Forms pokemonTeamResponse = restTemplate.getForObject(
+//        restTemplate.getForObject(
 //                "http://pokeapi.co/api/v2/pokemon/1", entity ,Forms.class)
 //        println pokemonTeamResponse
 
