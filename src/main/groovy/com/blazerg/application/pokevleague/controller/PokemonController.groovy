@@ -9,8 +9,11 @@ import io.swagger.annotations.ApiOperation
 import io.swagger.annotations.ApiResponse
 import io.swagger.annotations.ApiResponses
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.HttpEntity
+import org.springframework.http.HttpHeaders
+import org.springframework.http.HttpMethod
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestHeader
 import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.client.RestTemplate
@@ -42,13 +45,26 @@ class PokemonController {
 
     @GetMapping(value="/pokemon", produces = "application/json")
     @ResponseBody
-    String getExistingPoke(@RequestHeader(value="user-agent", defaultValue="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11") String userAgent) {
+    String getExistingPoke(){
         RestTemplate restTemplate = new RestTemplate()
-        Forms pokemonTeamResponse = restTemplate.getForObject(
-                "http://pokeapi.co/api/v2/pokemon/1", Forms.class)
-        println pokemonTeamResponse
 
-        pokemonTeamResponse.pokemonTeamResponse?.name
+        final HttpHeaders headers = new HttpHeaders()
+        headers.set("User-Agent", "test")
+
+        final HttpEntity<String> entity = new HttpEntity<String>(headers)
+
+        ResponseEntity<Forms> response = restTemplate.exchange("http://pokeapi.co/api/v2/pokemon/1", HttpMethod.GET, entity, Forms.class)
+        response.getBody()
+//
+//        Forms pokemonTeamResponse = restTemplate.getForEntity(
+//                "http://pokeapi.co/api/v2/pokemon/1", entity)
+//        println pokemonTeamResponse
+//
+//        Forms pokemonTeamResponse = restTemplate.getForObject(
+//                "http://pokeapi.co/api/v2/pokemon/1", entity ,Forms.class)
+//        println pokemonTeamResponse
+
+//        pokemonTeamResponse.pokemonTeamResponse?.name
     }
 
     @ApiIgnore
