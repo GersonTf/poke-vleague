@@ -52,7 +52,7 @@ class PokemonController {
         final HttpEntity<String> entity = new HttpEntity<String>(headers)
 
         Random random = new Random()
-        def index = random.nextInt(791)
+        def index = random.nextInt((791 - 1) + 1) + 1
 
         ResponseEntity<String> response = restTemplate.exchange("http://pokeapi.co/api/v2/pokemon/$index", HttpMethod.GET, entity, String.class)
         response.getBody()
