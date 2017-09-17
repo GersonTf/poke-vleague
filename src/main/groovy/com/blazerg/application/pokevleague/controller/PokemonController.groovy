@@ -48,7 +48,7 @@ class PokemonController {
                 "http://pokeapi.co/api/v2/pokemon/1", Forms.class)
         println pokemonTeamResponse
 
-        pokemonTeamResponse.pokemonTeamResponse.name
+        pokemonTeamResponse.pokemonTeamResponse?.name
     }
 
     @ApiIgnore
