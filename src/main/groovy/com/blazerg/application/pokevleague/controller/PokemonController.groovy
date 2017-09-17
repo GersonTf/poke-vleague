@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiResponse
 import io.swagger.annotations.ApiResponses
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RequestHeader
 import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.client.RestTemplate
@@ -41,7 +42,7 @@ class PokemonController {
 
     @GetMapping(value="/pokemon", produces = "application/json")
     @ResponseBody
-    String getExistingPoke() {
+    String getExistingPoke(@RequestHeader(value="User-Agent", defaultValue="nott") String userAgent) {
         RestTemplate restTemplate = new RestTemplate()
         Forms pokemonTeamResponse = restTemplate.getForObject(
                 "http://pokeapi.co/api/v2/pokemon/1", Forms.class)
