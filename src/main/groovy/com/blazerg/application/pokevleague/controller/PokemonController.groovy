@@ -1,5 +1,7 @@
 package com.blazerg.application.pokevleague.controller
 
+import com.blazerg.application.pokevleague.domain.entity.Pokemon
+import com.blazerg.application.pokevleague.domain.repository.PokemonRepository
 import com.blazerg.application.pokevleague.service.PokemonService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestMapping
@@ -10,7 +12,9 @@ import org.springframework.web.bind.annotation.RestController
 class PokemonController {
 
     @Autowired
-    PokemonService pokemonService
+    private PokemonService pokemonService
+    @Autowired
+    private PokemonRepository pokemonRepository
 
     @RequestMapping(value="/pokemon", produces = "application/json")
     @ResponseBody
@@ -20,6 +24,7 @@ class PokemonController {
 
     @RequestMapping(value="/")
     String emptyUrlRedirect() {
+        pokemonRepository.save(new Pokemon(name: "Charizard"))
         return "Hello World3!"
     }
 }
