@@ -6,6 +6,5 @@ spring:
       password: ${JDBC_DATABASE_PASSWORD}
 
   jpa:
-    show-sql: true
     hibernate:
       ddl-auto: update
