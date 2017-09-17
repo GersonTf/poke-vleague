@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.client.RestTemplate
 import org.springframework.web.servlet.view.RedirectView
 import springfox.documentation.annotations.ApiIgnore
 
@@ -40,10 +41,12 @@ class PokemonController {
     @GetMapping(value="/pokemon", produces = "application/json")
     @ResponseBody
     String getExistingPoke() {
-        String pokeApi = 'http://pokeapi.co/api/v2/pokemon/'
-        println pokeApi.toURI()
+        RestTemplate restTemplate = new RestTemplate()
+        PokemonTeamResponse pokemonTeamResponse = restTemplate.getForObject(
+                "http://gturnquist-quoters.cfapps.io/api/random", PokemonTeamResponse.class)
+        println pokemonTeamResponse
 
-        null
+        pokemonTeamResponse.toString()
     }
 
     @ApiIgnore
