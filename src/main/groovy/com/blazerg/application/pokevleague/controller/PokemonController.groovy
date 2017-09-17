@@ -41,7 +41,7 @@ class PokemonController {
     @ResponseBody
     String getExistingPoke() {
         String pokeApi = 'http://pokeapi.co/api/v2/pokemon/'
-        println pokeApi.toURL().text
+        println pokeApi.toURI()
 
         null
     }
