@@ -47,26 +47,16 @@ class PokemonController {
     @ResponseBody
     String getExistingPoke(){
         RestTemplate restTemplate = new RestTemplate()
-
         final HttpHeaders headers = new HttpHeaders()
         headers.set("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11")
-
         final HttpEntity<String> entity = new HttpEntity<String>(headers)
 
-        ResponseEntity<String> response = restTemplate.exchange("http://pokeapi.co/api/v2/pokemon/1", HttpMethod.GET, entity, String.class)
+        Random random = new Random()
+        def index = random.nextInt(791)
+
+        ResponseEntity<String> response = restTemplate.exchange("http://pokeapi.co/api/v2/pokemon/$index", HttpMethod.GET, entity, String.class)
         response.getBody()
 
-
-//
-//        Forms pokemonTeamResponse = restTemplate.getForEntity(
-//                "http://pokeapi.co/api/v2/pokemon/1", entity, Forms.class)
-//        println pokemonTeamResponse
-//
-//        restTemplate.getForObject(
-//                "http://pokeapi.co/api/v2/pokemon/1", entity ,Forms.class)
-//        println pokemonTeamResponse
-
-//        pokemonTeamResponse.pokemonTeamResponse?.name
     }
 
     @ApiIgnore
