@@ -46,7 +46,7 @@ class PokemonController {
                 "http://gturnquist-quoters.cfapps.io/api/random", PokemonTeamResponse.class)
         println pokemonTeamResponse
 
-        pokemonTeamResponse.toString()
+        pokemonTeamResponse.quote
     }
 
     @ApiIgnore
