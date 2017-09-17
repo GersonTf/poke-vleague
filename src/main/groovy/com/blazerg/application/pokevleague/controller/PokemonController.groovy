@@ -40,7 +40,7 @@ class PokemonController {
     @GetMapping(value="/pokemon", produces = "application/json")
     @ResponseBody
     String getExistingPoke() {
-        String pokeApi = 'http://pokeapi.co/api/v2/pokemon/1'
+        String pokeApi = 'http://pokeapi.co/api/v2/pokemon/'
         println pokeApi.toURL().text
 
         null
