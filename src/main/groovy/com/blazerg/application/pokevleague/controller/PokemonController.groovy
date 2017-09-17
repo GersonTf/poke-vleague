@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.servlet.view.RedirectView
+import springfox.documentation.annotations.ApiIgnore
 
 @Api(value = 'Pokemon', description = 'The pokemon league API')
 @RestController
@@ -44,6 +45,7 @@ class PokemonController {
         nombre
     }
 
+    @ApiIgnore
     @GetMapping(value="/")
     RedirectView emptyUrlRedirect() {
         return new RedirectView("https://poke-vleague.herokuapp.com/swagger-ui.html")
