@@ -53,8 +53,10 @@ class PokemonController {
 
         final HttpEntity<String> entity = new HttpEntity<String>(headers)
 
-        ResponseEntity<Forms> response = restTemplate.exchange("http://pokeapi.co/api/v2/pokemon/1", HttpMethod.GET, entity, Forms.class)
+        ResponseEntity<String> response = restTemplate.exchange("http://pokeapi.co/api/v2/pokemon/1", HttpMethod.GET, entity, String.class)
         response.getBody()
+
+
 //
 //        Forms pokemonTeamResponse = restTemplate.getForEntity(
 //                "http://pokeapi.co/api/v2/pokemon/1", entity)
