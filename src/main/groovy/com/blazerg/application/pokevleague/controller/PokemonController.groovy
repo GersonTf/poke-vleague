@@ -19,7 +19,8 @@ class PokemonController {
     @RequestMapping(value="/pokemon", produces = "application/json")
     @ResponseBody
     String getExistingPoke() {
-        return "Hello World2!"
+        String nombre = pokemonRepository.findAll().get(0).name
+        nombre
     }
 
     @RequestMapping(value="/")
