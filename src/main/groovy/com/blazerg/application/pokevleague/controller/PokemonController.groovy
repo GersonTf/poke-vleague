@@ -1,6 +1,7 @@
 package com.blazerg.application.pokevleague.controller
 
 import com.blazerg.application.pokevleague.domain.repository.PokemonRepository
+import com.blazerg.application.pokevleague.model.Forms
 import com.blazerg.application.pokevleague.model.PokemonTeamResponse
 import com.blazerg.application.pokevleague.service.PokemonService
 import io.swagger.annotations.Api
@@ -42,11 +43,11 @@ class PokemonController {
     @ResponseBody
     String getExistingPoke() {
         RestTemplate restTemplate = new RestTemplate()
-        PokemonTeamResponse pokemonTeamResponse = restTemplate.getForObject(
-                "http://gturnquist-quoters.cfapps.io/api/random", PokemonTeamResponse.class)
+        Forms pokemonTeamResponse = restTemplate.getForObject(
+                "http://pokeapi.co/api/v2/pokemon/1", Forms.class)
         println pokemonTeamResponse
 
-        pokemonTeamResponse.type
+        pokemonTeamResponse.pokemonTeamResponse.name
     }
 
     @ApiIgnore
