@@ -44,9 +44,9 @@ class PokemonController {
             @ApiResponse(code = 500, message = 'Server error')
     ])
 
-    @GetMapping(value="/pokemon", produces = "application/json")
+    @GetMapping(value = "/pokemon", produces = "application/json")
     @ResponseBody
-    Forms getExistingPoke(){
+    List<Forms> getExistingPoke() {
         RestTemplate restTemplate = new RestTemplate()
         final HttpHeaders headers = new HttpHeaders()
         headers.set("User-Agent", "Mozilla/5.0")
@@ -55,13 +55,18 @@ class PokemonController {
         Random random = new Random()
         def index = random.nextInt((721 - 1) + 1) + 1
 
-        ResponseEntity<Forms> response = restTemplate.exchange("http://pokeapi.co/api/v2/pokemon/$index", HttpMethod.GET, entity, Forms.class)
-        response.getBody()
+        List<Forms> pokeTeam = new ArrayList<Forms>()
 
+        6.times {
+            ResponseEntity<Forms> response = restTemplate.exchange("http://pokeapi.co/api/v2/pokemon/$index", HttpMethod.GET, entity, Forms.class)
+            pokeTeam.add(response.getBody())
+        }
+
+        pokeTeam
     }
 
     @ApiIgnore
-    @GetMapping(value="/")
+    @GetMapping(value = "/")
     RedirectView emptyUrlRedirect() {
         return new RedirectView("https://poke-vleague.herokuapp.com/swagger-ui.html")
     }
