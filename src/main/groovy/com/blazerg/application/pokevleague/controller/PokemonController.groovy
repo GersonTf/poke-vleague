@@ -8,7 +8,6 @@ import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
 import io.swagger.annotations.ApiResponse
 import io.swagger.annotations.ApiResponses
-import org.slf4j.Logger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpEntity
 import org.springframework.http.HttpHeaders
@@ -31,10 +30,10 @@ class PokemonController {
     private PokemonRepository pokemonRepository
 
     @ApiOperation(
-            notes = 'Method that get you a random pokemon.',
+            notes = 'Method that get you a random single pokemon.',
             response = PokemonTeamResponse,
-            tags = ['Pokemon Team'],
-            value = 'Find a random pokemon using the pokeApi'
+            tags = ['Single Pokemon'],
+            value = 'Find a random pokemon for a new signing'
     )
 
     @ApiResponses(value = [
@@ -46,7 +45,7 @@ class PokemonController {
 
     @GetMapping(value = "/pokemon", produces = "application/json")
     @ResponseBody
-    List<Forms> getExistingPoke() {
+    Forms getExistingPoke() {
         RestTemplate restTemplate = new RestTemplate()
         final HttpHeaders headers = new HttpHeaders()
         headers.set("User-Agent", "Mozilla/5.0")
@@ -55,9 +54,38 @@ class PokemonController {
         Random random = new Random()
         def index = random.nextInt((721 - 1) + 1) + 1
 
+        ResponseEntity<Forms> response = restTemplate.exchange("http://pokeapi.co/api/v2/pokemon/$index", HttpMethod.GET, entity, Forms.class)
+        response.getBody()
+
+    }
+
+    @ApiOperation(
+            notes = 'Method that get you a random pokemon team.',
+            response = PokemonTeamResponse,
+            tags = ['Pokemon Team'],
+            value = 'Find a random team of six pokemon'
+    )
+
+    @ApiResponses(value = [
+            @ApiResponse(code = 200, message = 'Successful operation'),
+            @ApiResponse(code = 400, message = 'Bad Request'),
+            @ApiResponse(code = 404, message = 'Not Found'),
+            @ApiResponse(code = 500, message = 'Server error')
+    ])
+
+    @GetMapping(value = "/team", produces = "application/json")
+    @ResponseBody
+    List<Forms> getExistingPokeTeam() {
+        RestTemplate restTemplate = new RestTemplate()
+        final HttpHeaders headers = new HttpHeaders()
+        headers.set("User-Agent", "Mozilla/5.0")
+        final HttpEntity<String> entity = new HttpEntity<String>(headers)
+
+        Random random = new Random()
         List<Forms> pokeTeam = new ArrayList<Forms>()
 
         6.times {
+            def index = random.nextInt((721 - 1) + 1) + 1
             ResponseEntity<Forms> response = restTemplate.exchange("http://pokeapi.co/api/v2/pokemon/$index", HttpMethod.GET, entity, Forms.class)
             pokeTeam.add(response.getBody())
         }
