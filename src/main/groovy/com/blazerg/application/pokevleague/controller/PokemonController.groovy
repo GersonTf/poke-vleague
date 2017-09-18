@@ -1,6 +1,7 @@
 package com.blazerg.application.pokevleague.controller
 
 import com.blazerg.application.pokevleague.domain.repository.PokemonRepository
+import com.blazerg.application.pokevleague.model.Forms
 import com.blazerg.application.pokevleague.model.PokemonTeamResponse
 import com.blazerg.application.pokevleague.service.PokemonService
 import io.swagger.annotations.Api
@@ -45,16 +46,16 @@ class PokemonController {
 
     @GetMapping(value="/pokemon", produces = "application/json")
     @ResponseBody
-    String getExistingPoke(){
+    Forms getExistingPoke(){
         RestTemplate restTemplate = new RestTemplate()
         final HttpHeaders headers = new HttpHeaders()
-        headers.set("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11")
+        headers.set("User-Agent", "Mozilla/5.0")
         final HttpEntity<String> entity = new HttpEntity<String>(headers)
 
         Random random = new Random()
         def index = random.nextInt((721 - 1) + 1) + 1
 
-        ResponseEntity<String> response = restTemplate.exchange("http://pokeapi.co/api/v2/pokemon/$index", HttpMethod.GET, entity, String.class)
+        ResponseEntity<Forms> response = restTemplate.exchange("http://pokeapi.co/api/v2/pokemon/$index", HttpMethod.GET, entity, Forms.class)
         response.getBody()
 
     }
