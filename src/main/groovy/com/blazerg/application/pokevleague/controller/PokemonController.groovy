@@ -43,7 +43,7 @@ class PokemonController {
             @ApiResponse(code = 500, message = 'Server error')
     ])
 
-    @GetMapping(value = "/pokemon", produces = "application/json")
+    @GetMapping(value = "/pokemon/random", produces = "application/json")
     @ResponseBody
     Forms getExistingPoke() {
         RestTemplate restTemplate = new RestTemplate()
@@ -73,7 +73,7 @@ class PokemonController {
             @ApiResponse(code = 500, message = 'Server error')
     ])
 
-    @GetMapping(value = "/team", produces = "application/json")
+    @GetMapping(value = "/team/random", produces = "application/json")
     @ResponseBody
     List<Forms> getExistingPokeTeam() {
         RestTemplate restTemplate = new RestTemplate()
