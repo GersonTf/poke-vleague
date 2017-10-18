@@ -54,7 +54,7 @@ class PokemonController {
         Random random = new Random()
         def index = random.nextInt((721 - 1) + 1) + 1
 
-        ResponseEntity<Forms> response = restTemplate.exchange("http://pokeapi.co/api/v2/pokemon/$index", HttpMethod.GET, entity, Forms.class)
+        ResponseEntity<Forms> response = restTemplate.exchange("https://pokeapi.co/api/v2/pokemon/$index", HttpMethod.GET, entity, Forms.class)
         response.getBody()
 
     }
@@ -86,7 +86,7 @@ class PokemonController {
 
         6.times {
             def index = random.nextInt((721 - 1) + 1) + 1
-            ResponseEntity<Forms> response = restTemplate.exchange("http://pokeapi.co/api/v2/pokemon/$index", HttpMethod.GET, entity, Forms.class)
+            ResponseEntity<Forms> response = restTemplate.exchange("https://pokeapi.co/api/v2/pokemon/$index", HttpMethod.GET, entity, Forms.class)
             pokeTeam.add(response.getBody())
         }
 
