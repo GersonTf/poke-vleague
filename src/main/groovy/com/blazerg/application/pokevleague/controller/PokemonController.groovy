@@ -91,7 +91,7 @@ class PokemonController {
             pokeTeam.add(response.getBody())
         }
 
-        PokemonTeamResponse pokemonTeamResponse = new PokemonTeamResponse(pokeTeam: pokeTeam)
+        new PokemonTeamResponse(pokeTeam: pokeTeam)
     }
 
     @ApiIgnore
