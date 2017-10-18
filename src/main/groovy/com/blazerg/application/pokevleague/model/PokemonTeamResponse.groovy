@@ -7,6 +7,6 @@ import groovy.transform.Canonical
 @JsonIgnoreProperties(ignoreUnknown = true)
 class PokemonTeamResponse {
 
-    String name
+    ArrayList<PokeResponse> pokeTeam
 
 }
