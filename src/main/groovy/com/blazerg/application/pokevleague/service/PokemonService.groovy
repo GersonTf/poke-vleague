@@ -9,4 +9,10 @@ class PokemonService {
 
     @Autowired
     PokemonRepository pokemonRepository
+
+    Integer getRandomPokedexId(){
+        Random random = new Random()
+        random.nextInt((721 - 1) + 1) + 1
+    }
+
 }
