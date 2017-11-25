@@ -5,9 +5,9 @@ import groovy.transform.Canonical
 
 @Canonical
 @JsonIgnoreProperties(ignoreUnknown = true)
-class Update {
+class Chat {
 
-    int update_id
-    Message message
-    Chat chat
+    Integer id
+    String type
+    String title
 }
