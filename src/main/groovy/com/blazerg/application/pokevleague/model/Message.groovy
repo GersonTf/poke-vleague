@@ -6,9 +6,9 @@ import groovy.transform.Canonical
 @Canonical
 @JsonIgnoreProperties(ignoreUnknown = true)
 class Message {
-    int message_id
+    Integer message_id
 //    private User from;
-    int date
+    Integer date
     Chat chat
     String text
 }
