@@ -7,6 +7,6 @@ import groovy.transform.Canonical
 @JsonIgnoreProperties(ignoreUnknown = true)
 class Update {
 
-    Integer update_id
+    def update_id
     Message message
 }
