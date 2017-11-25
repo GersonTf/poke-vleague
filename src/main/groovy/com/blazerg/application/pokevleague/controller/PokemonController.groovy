@@ -104,7 +104,7 @@ class PokemonController {
     @GetMapping(value = "/")
     RedirectView emptyUrlRedirect() {
 
-        this.messageService.sendNotificationToTelegram("Unknown users access")
+        this.messageService.sendNotificationToTelegram("Unknown user access")
         return new RedirectView("https://poke-vleague.herokuapp.com/swagger-ui.html")
     }
 }
