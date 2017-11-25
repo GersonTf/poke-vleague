@@ -15,6 +15,8 @@ import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpMethod
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.client.RestTemplate
@@ -78,7 +80,8 @@ class PokemonController {
         @ApiResponse(code = 500, message = 'Server error')
     ])
 
-    @GetMapping(value = "/team/random", produces = "application/json")
+    @RequestMapping(value = "/team/random", produces = "application/json",
+                    method = [ RequestMethod.GET, RequestMethod.POST ])
     @ResponseBody
     PokemonTeamResponse getExistingPokeTeam() {
 
