@@ -7,7 +7,7 @@ import groovy.transform.Canonical
 @JsonIgnoreProperties(ignoreUnknown = true)
 class Chat {
 
-    Integer id
+    def id
     String type
     String title
     String username
