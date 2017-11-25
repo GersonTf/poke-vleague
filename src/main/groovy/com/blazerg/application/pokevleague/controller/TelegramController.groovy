@@ -21,6 +21,7 @@ class TelegramController {
     void webhook(@RequestBody Update update) {
 
         log.info("message received ${update.message?.text}")
+        log.info("$update")
         this.messageService.sendNotificationToTelegram(update.message?.text)
     }
 }
