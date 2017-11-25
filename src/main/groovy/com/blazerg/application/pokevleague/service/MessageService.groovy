@@ -20,7 +20,7 @@ class MessageService {
     private Environment environment
 
     /**
-     * It sends a message to a telegram bot
+     * It sends a message to a telegram bot in the system chatId
      * @param message to send
      */
     void sendNotificationToTelegram(String message) {
@@ -34,6 +34,31 @@ class MessageService {
 
         MultiValueMap<String, Object> params = new LinkedMultiValueMap<String, Object>()
         params.add("chat_id", environment.getProperty("CHAT_ID"))
+        params.add("text", finalMessage)
+
+        HttpEntity<LinkedMultiValueMap<String, Object>> request = new HttpEntity<>(params, headers)
+
+        restTemplate.postForEntity(
+                environment.getProperty("URL_TELEGRAM"),
+                request, String.class
+        )
+    }
+
+    /**
+     * It sends a message to a telegram bot with a specific chatId
+     * @param message to send
+     */
+    void sendNotificationToTelegram(String message, Integer chatId ) {
+
+        RestTemplate restTemplate = new RestTemplate()
+        Date accessDate = new Date()
+        String finalMessage = message + " " + accessDate
+
+        HttpHeaders headers = new HttpHeaders()
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED)
+
+        MultiValueMap<String, Object> params = new LinkedMultiValueMap<String, Object>()
+        params.add("chat_id", chatId)
         params.add("text", finalMessage)
 
         HttpEntity<LinkedMultiValueMap<String, Object>> request = new HttpEntity<>(params, headers)

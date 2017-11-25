@@ -9,6 +9,6 @@ class Message {
     int message_id
 //    private User from;
     int date
-//    private Chat chat;
+    Chat chat
     String text
 }

@@ -10,4 +10,5 @@ class Chat {
     Integer id
     String type
     String title
+    String username
 }

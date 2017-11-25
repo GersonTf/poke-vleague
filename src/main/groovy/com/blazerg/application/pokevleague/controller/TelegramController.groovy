@@ -19,14 +19,14 @@ class TelegramController {
 
     @RequestMapping(value = "/webhook", method = RequestMethod.POST)
     void webhook(@RequestBody Update update) {
-
+        Integer chatId = message.getChat().getId()
         String inputMessage = update.message?.text
 
         log.info("message received $inputMessage")
         log.info("$update")
 
         if(inputMessage == "/getPoke"){
-            this.messageService.sendNotificationToTelegram(update.message?.text)
+            this.messageService.sendNotificationToTelegram(update.message?.text, chatId)
         }
     }
 }
