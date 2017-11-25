@@ -49,7 +49,8 @@ class PokemonController {
         @ApiResponse(code = 500, message = 'Server error')
     ])
 
-    @GetMapping(value = "/pokemon/random", produces = "application/json")
+    @RequestMapping(value = "/pokemon/random", produces = "application/json",
+                    method = [ RequestMethod.GET, RequestMethod.POST ])
     @ResponseBody
     PokeResponse getExistingPoke() {
 
