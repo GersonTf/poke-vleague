@@ -3,6 +3,7 @@ package com.blazerg.application.pokevleague.controller
 import com.blazerg.application.pokevleague.domain.repository.PokemonRepository
 import com.blazerg.application.pokevleague.model.PokeResponse
 import com.blazerg.application.pokevleague.model.PokemonTeamResponse
+import com.blazerg.application.pokevleague.service.MessageService
 import com.blazerg.application.pokevleague.service.PokemonService
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
@@ -23,6 +24,9 @@ import springfox.documentation.annotations.ApiIgnore
 @Api(value = 'Pokemon', description = 'The pokemon league API')
 @RestController
 class PokemonController {
+
+    @Autowired
+    private MessageService messageService
 
     @Autowired
     private PokemonService pokemonService
@@ -46,6 +50,7 @@ class PokemonController {
     @GetMapping(value = "/pokemon/random", produces = "application/json")
     @ResponseBody
     PokeResponse getExistingPoke() {
+
         RestTemplate restTemplate = new RestTemplate()
         final HttpHeaders headers = new HttpHeaders()
         headers.set("User-Agent", "Mozilla/5.0")
@@ -76,6 +81,7 @@ class PokemonController {
     @GetMapping(value = "/team/random", produces = "application/json")
     @ResponseBody
     PokemonTeamResponse getExistingPokeTeam() {
+
         RestTemplate restTemplate = new RestTemplate()
         final HttpHeaders headers = new HttpHeaders()
         headers.set("User-Agent", "Mozilla/5.0")
@@ -97,6 +103,8 @@ class PokemonController {
     @ApiIgnore
     @GetMapping(value = "/")
     RedirectView emptyUrlRedirect() {
+
+        this.messageService.sendNotificationToTelegram("Unknown users access")
         return new RedirectView("https://poke-vleague.herokuapp.com/swagger-ui.html")
     }
 }
