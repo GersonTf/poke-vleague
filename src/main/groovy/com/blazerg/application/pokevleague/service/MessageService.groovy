@@ -33,7 +33,7 @@ class MessageService {
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED)
 
         MultiValueMap<String, Object> params = new LinkedMultiValueMap<String, Object>()
-        params.add("chat_id",  environment.getProperty("CHAT_ID"))
+        params.add("chat_id", environment.getProperty("CHAT_ID"))
         params.add("text", finalMessage)
 
         HttpEntity<LinkedMultiValueMap<String, Object>> request = new HttpEntity<>(params, headers)
