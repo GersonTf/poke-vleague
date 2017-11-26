@@ -25,7 +25,8 @@ class PokemonService {
 
         def index = getRandomPokedexId()
 
-        ResponseEntity<PokeResponse> response = restTemplate.exchange("https://pokeapi.co/api/v2/pokemon/$index", HttpMethod.GET, entity, PokeResponse.class)
+        ResponseEntity<PokeResponse> response = restTemplate.exchange(
+                "https://pokeapi.co/api/v2/pokemon/$index", HttpMethod.GET, entity, PokeResponse.class)
         response.getBody()
 
     }
