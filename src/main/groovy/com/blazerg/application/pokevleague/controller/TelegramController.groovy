@@ -32,8 +32,8 @@ class TelegramController {
         log.info("$update")
 
         if (inputMessage == "/getPoke") {
-            this.messageService.sendNotificationToTelegram("Ninjas sent to your coordinates", chatId)
-//            this.messageService.sendNotificationToTelegram(pokemonService.getExistingPoke().getName(), chatId)
+//            this.messageService.sendNotificationToTelegram("Ninjas sent to your coordinates", chatId)
+            this.messageService.sendNotificationToTelegram(pokemonService.getExistingPoke().getName(), chatId)
             log.info("Poke retrieved from the pokeApi")
         }
     }
