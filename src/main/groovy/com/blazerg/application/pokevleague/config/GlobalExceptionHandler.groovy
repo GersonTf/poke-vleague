@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseStatus
 // * this class catch the exception thrown if the bots sends a wrong or unknown command
 // */
 class GlobalExceptionHandler {
-//    @ExceptionHandler(value = [MissingMethodException.class])
+//    @ExceptionHandler(value = [MissingMethodException.class])s
 //    @ResponseStatus(value = HttpStatus.BAD_REQUEST,
 //            reason = "no method found for the input command message")
 //    void handle(MissingMethodException e) {
