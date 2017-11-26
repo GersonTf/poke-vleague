@@ -48,18 +48,16 @@ class MessageService {
      * It sends a message to a telegram bot with a specific chatId
      * @param message to send
      */
-    void sendNotificationToTelegram(String message, Integer chatId ) {
+    void sendNotificationToTelegram(String message, String chatId ) {
 
         RestTemplate restTemplate = new RestTemplate()
-        Date accessDate = new Date()
-        String finalMessage = message + " " + accessDate
 
         HttpHeaders headers = new HttpHeaders()
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED)
 
         MultiValueMap<String, Object> params = new LinkedMultiValueMap<String, Object>()
         params.add("chat_id", chatId)
-        params.add("text", finalMessage)
+        params.add("text", message)
 
         HttpEntity<LinkedMultiValueMap<String, Object>> request = new HttpEntity<>(params, headers)
 
