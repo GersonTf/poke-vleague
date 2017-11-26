@@ -5,7 +5,6 @@ import com.blazerg.application.pokevleague.service.MessageService
 import com.blazerg.application.pokevleague.service.PokemonService
 import com.blazerg.application.pokevleague.service.TelegramHandlerService
 import groovy.util.logging.Log
-import io.swagger.annotations.Api
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
