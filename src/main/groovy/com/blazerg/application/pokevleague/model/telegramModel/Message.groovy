@@ -1,4 +1,4 @@
-package com.blazerg.application.pokevleague.model
+package com.blazerg.application.pokevleague.model.telegramModel
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import groovy.transform.Canonical
@@ -7,7 +7,7 @@ import groovy.transform.Canonical
 @JsonIgnoreProperties(ignoreUnknown = true)
 class Message {
     def message_id
-//    private User from;
+    User from
     Integer date
     Chat chat
     String text
