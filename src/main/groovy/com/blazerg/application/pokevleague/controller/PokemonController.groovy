@@ -36,42 +36,42 @@ class PokemonController {
     private PokemonRepository pokemonRepository
 
     @ApiOperation(
-        notes = 'Method that get you a random single pokemon.',
-        response = PokeResponse,
-        tags = ['Single Pokemon'],
-        value = 'Find a random pokemon for a new signing'
+            notes = 'Method that get you a random single pokemon.',
+            response = PokeResponse,
+            tags = ['Single Pokemon'],
+            value = 'Find a random pokemon for a new signing'
     )
 
     @ApiResponses(value = [
-        @ApiResponse(code = 200, message = 'Successful operation'),
-        @ApiResponse(code = 400, message = 'Bad Request'),
-        @ApiResponse(code = 404, message = 'Not Found'),
-        @ApiResponse(code = 500, message = 'Server error')
+            @ApiResponse(code = 200, message = 'Successful operation'),
+            @ApiResponse(code = 400, message = 'Bad Request'),
+            @ApiResponse(code = 404, message = 'Not Found'),
+            @ApiResponse(code = 500, message = 'Server error')
     ])
 
     @RequestMapping(value = "/pokemon/random", produces = "application/json",
-                    method = RequestMethod.GET)
+            method = RequestMethod.GET)
     @ResponseBody
     PokeResponse getExistingPoke() {
         this.pokemonService.getExistingPoke()
     }
 
     @ApiOperation(
-        notes = 'Method that get you a random pokemon team.',
-        response = PokemonTeamResponse,
-        tags = ['Pokemon Team'],
-        value = 'Find a random team of six pokemon'
+            notes = 'Method that get you a random pokemon team.',
+            response = PokemonTeamResponse,
+            tags = ['Pokemon Team'],
+            value = 'Find a random team of six pokemon'
     )
 
     @ApiResponses(value = [
-        @ApiResponse(code = 200, message = 'Successful operation'),
-        @ApiResponse(code = 400, message = 'Bad Request'),
-        @ApiResponse(code = 404, message = 'Not Found'),
-        @ApiResponse(code = 500, message = 'Server error')
+            @ApiResponse(code = 200, message = 'Successful operation'),
+            @ApiResponse(code = 400, message = 'Bad Request'),
+            @ApiResponse(code = 404, message = 'Not Found'),
+            @ApiResponse(code = 500, message = 'Server error')
     ])
 
     @RequestMapping(value = "/team/random", produces = "application/json",
-                    method = RequestMethod.GET)
+            method = RequestMethod.GET)
     @ResponseBody
     PokemonTeamResponse getExistingPokeTeam() {
 
@@ -84,8 +84,8 @@ class PokemonController {
 
         6.times {
             ResponseEntity<PokeResponse> response = restTemplate.exchange(
-                "https://pokeapi.co/api/v2/pokemon/${pokemonService.getRandomPokedexId()}",
-                HttpMethod.GET, entity, PokeResponse.class
+                    "https://pokeapi.co/api/v2/pokemon/${pokemonService.getRandomPokedexId()}",
+                    HttpMethod.GET, entity, PokeResponse.class
             )
             pokeTeam.add(response.getBody())
         }

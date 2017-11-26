@@ -16,12 +16,12 @@ class TelegramHandlerService {
     @Autowired
     PokemonService pokemonService
 
-    void messageReceiver(String message, String chatId){
+    void messageReceiver(String message, String chatId) {
         String methodName = message.substring(1) + "Received"
         invokeMethod(methodName, chatId)
     }
 
-    void getPokeReceived(String chatId){
+    void getPokeReceived(String chatId) {
         this.messageService.sendNotificationToTelegram(pokemonService.getExistingPoke().getName(), chatId)
     }
 }

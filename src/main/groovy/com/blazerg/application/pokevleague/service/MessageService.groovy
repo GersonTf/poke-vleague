@@ -48,7 +48,7 @@ class MessageService {
      * It sends a message to a telegram bot with a specific chatId
      * @param message to send
      */
-    void sendNotificationToTelegram(String message, String chatId ) {
+    void sendNotificationToTelegram(String message, String chatId) {
 
         RestTemplate restTemplate = new RestTemplate()
 
