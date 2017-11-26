@@ -1,9 +1,11 @@
 package com.blazerg.application.pokevleague.controller
 
-import com.blazerg.application.pokevleague.model.Update
+import com.blazerg.application.pokevleague.model.telegramModel.Update
 import com.blazerg.application.pokevleague.service.MessageService
 import com.blazerg.application.pokevleague.service.PokemonService
+import com.blazerg.application.pokevleague.service.TelegramHandlerService
 import groovy.util.logging.Log
+import io.swagger.annotations.Api
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -21,6 +23,9 @@ class TelegramController {
     @Autowired
     private PokemonService pokemonService
 
+    @Autowired
+    private TelegramHandlerService telegramHandler
+
     @RequestMapping(value = "/webhook", method = RequestMethod.POST)
     void webhook(@RequestBody Update update) {
         String chatId = update.message.getChat().getId()
@@ -29,9 +34,11 @@ class TelegramController {
         log.info("message received $inputMessage")
         log.info("$update")
 
-        if (inputMessage == "/getPoke") {
-            this.messageService.sendNotificationToTelegram(pokemonService.getExistingPoke().getName(), chatId)
-            log.info("Poke retrieved from the pokeApi")
-        }
+        this.telegramHandler.messageReceiver(inputMessage, chatId)
+
+//        if (inputMessage == "/getPoke") {
+//            this.messageService.sendNotificationToTelegram(pokemonService.getExistingPoke().getName(), chatId)
+//            log.info("Poke retrieved from the pokeApi")
+//        }
     }
 }
