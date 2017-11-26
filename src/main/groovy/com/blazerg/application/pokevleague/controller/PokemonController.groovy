@@ -50,7 +50,7 @@ class PokemonController {
     ])
 
     @RequestMapping(value = "/pokemon/random", produces = "application/json",
-                    method = [ RequestMethod.GET, RequestMethod.POST ])
+                    method = RequestMethod.GET)
     @ResponseBody
     PokeResponse getExistingPoke() {
         this.pokemonService.getExistingPoke()
@@ -71,7 +71,7 @@ class PokemonController {
     ])
 
     @RequestMapping(value = "/team/random", produces = "application/json",
-                    method = [ RequestMethod.GET, RequestMethod.POST ])
+                    method = RequestMethod.GET)
     @ResponseBody
     PokemonTeamResponse getExistingPokeTeam() {
 
