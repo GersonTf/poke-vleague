@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service
 
 /**
  * this class handles the telegram's bot commands
- * for example, /getPoke sent by an user goes to the sendPoke method
+ * for example, /getPoke sent by an user goes to the getPokeReceived method
  */
 @Service
 class TelegramHandlerService {
@@ -23,5 +23,11 @@ class TelegramHandlerService {
 
     void getPokeReceived(String chatId) {
         this.messageService.sendNotificationToTelegram(pokemonService.getExistingPoke().getName(), chatId)
+    }
+
+    void getPokeTeamReceived(String chatId){
+        6.times {
+            this.messageService.sendNotificationToTelegram(pokemonService.getExistingPoke().getName(), chatId)
+        }
     }
 }
