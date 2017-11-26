@@ -53,18 +53,7 @@ class PokemonController {
                     method = [ RequestMethod.GET, RequestMethod.POST ])
     @ResponseBody
     PokeResponse getExistingPoke() {
-
-        RestTemplate restTemplate = new RestTemplate()
-        final HttpHeaders headers = new HttpHeaders()
-        headers.set("User-Agent", "Mozilla/5.0")
-        final HttpEntity<String> entity = new HttpEntity<String>(headers)
-
-        Random random = new Random()
-        def index = random.nextInt((721 - 1) + 1) + 1
-
-        ResponseEntity<PokeResponse> response = restTemplate.exchange("https://pokeapi.co/api/v2/pokemon/$index", HttpMethod.GET, entity, PokeResponse.class)
-        response.getBody()
-
+        this.pokemonService.getExistingPoke()
     }
 
     @ApiOperation(
