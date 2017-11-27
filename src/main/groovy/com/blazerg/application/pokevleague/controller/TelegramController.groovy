@@ -4,6 +4,7 @@ import com.blazerg.application.pokevleague.model.telegramModel.Update
 import com.blazerg.application.pokevleague.service.MessageService
 import com.blazerg.application.pokevleague.service.PokemonService
 import com.blazerg.application.pokevleague.service.TelegramHandlerService
+import com.blazerg.application.pokevleague.telegramAMQP.TelegramSender
 import groovy.util.logging.Log
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestBody
@@ -25,6 +26,9 @@ class TelegramController {
     @Autowired
     private TelegramHandlerService telegramHandler
 
+    @Autowired
+    private TelegramSender telegramSender
+
     @RequestMapping(value = "/webhook", method = RequestMethod.POST)
     void webhook(@RequestBody Update update) {
         String chatId = update.message.getChat().getId()
@@ -40,4 +44,13 @@ class TelegramController {
             log.info("Poke retrieved from the pokeApi")
         }
     }
+
+    @RequestMapping(value = "/webhookRabbit", method = RequestMethod.POST)
+    void webhookRabbit(@RequestBody Update update) {
+
+        String chatId = update.message.getChat().getId()
+        String inputMessage = update.message?.text + "|" + chatId
+        this.telegramSender.send(inputMessage)
+    }
+
 }
