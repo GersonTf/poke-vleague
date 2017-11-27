@@ -16,16 +16,20 @@ class TelegramHandlerService {
     @Autowired
     PokemonService pokemonService
 
+    private static final def destinCodes = ["getPoke", "getPokeTeam", "getAyuda"]
+
     void messageReceiver(String message, String chatId) {
-        String methodName = message.substring(1) + "Received"
-        invokeMethod(methodName, chatId)
+        if (destinCodes.contains(message)) {
+            String methodName = message + "Received"
+            invokeMethod(methodName, chatId)
+        }
     }
 
     void getPokeReceived(String chatId) {
         this.messageService.sendNotificationToTelegram(pokemonService.getExistingPoke().getName(), chatId)
     }
 
-    void getPokeTeamReceived(String chatId){
+    void getPokeTeamReceived(String chatId) {
         6.times {
             this.messageService.sendNotificationToTelegram(pokemonService.getExistingPoke().getName(), chatId)
         }
