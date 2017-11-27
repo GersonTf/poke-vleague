@@ -33,11 +33,11 @@ class TelegramController {
         log.info("message received $inputMessage")
         log.info("$update")
 
-        this.telegramHandler.messageReceiver(inputMessage, chatId)
+//        this.telegramHandler.messageReceiver(inputMessage, chatId)
 
-//        if (inputMessage == "/getPoke") {
-//            this.messageService.sendNotificationToTelegram(pokemonService.getExistingPoke().getName(), chatId)
-//            log.info("Poke retrieved from the pokeApi")
-//        }
+        if (inputMessage == "/getPoke") {
+            this.messageService.sendNotificationToTelegram(pokemonService.getExistingPoke().getName(), chatId)
+            log.info("Poke retrieved from the pokeApi")
+        }
     }
 }
