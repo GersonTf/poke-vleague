@@ -8,3 +8,10 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+
+  profiles:
+    active: usage_message
+
+logging:
+  level:
+    org: ERROR
