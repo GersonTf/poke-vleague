@@ -73,6 +73,7 @@ class PokemonController {
     @RequestMapping(value = "/team/random", produces = "application/json",
             method = RequestMethod.GET)
     @ResponseBody
+    //TODO take logic outside controller
     PokemonTeamResponse getExistingPokeTeam() {
 
         RestTemplate restTemplate = new RestTemplate()
