@@ -23,7 +23,7 @@ import org.springframework.web.client.RestTemplate
 import org.springframework.web.servlet.view.RedirectView
 import springfox.documentation.annotations.ApiIgnore
 
-@Api(value = 'Pokemon', description = 'The pokemon league API')
+@Api(value = 'Pokemon', description = 'The unofficial pokemon league API')
 @RestController
 class PokemonController {
 
