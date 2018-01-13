@@ -42,9 +42,11 @@ class TelegramHandlerService {
 
     void getPokeTeamReceived(Update params) {
         String chatId = params?.message?.getChat()?.getId()
+        String finalMessage = ""
         6.times {
-            this.messageService.sendNotificationToTelegram(pokemonService.getExistingPoke().getName(), chatId)
+            finalMessage += pokemonService.getExistingPoke().getName() + ", "
         }
+        this.messageService.sendNotificationToTelegram(finalMessage, chatId)
     }
 
     void createTeamReceived(Update params) {
